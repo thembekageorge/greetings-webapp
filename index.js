@@ -3,7 +3,6 @@ var app = express();
 var list = [];
 var noDup = [];
 var name = '';
-var counter = 0;
 var map = new Object();
 
 
@@ -29,18 +28,15 @@ app.get('/greeted/', function(req, res) {
 // });
 
 app.get('/counter/:user', function(req, res) {
-  // name = req.params.user;
   for (var i = 0; i < list.length; i++) {
     if (map[list[i]] != null) {
       map[list[i]] += 1;
-      // counter++;
       console.log(list);
       console.log(map);
     } else {
       map[list[i]] = 1;
-      // res.send('I am sorry' + name + 'you have not been ');
     }
-    res.send(name + ' you have been greeted: ' + map[list[i]] + ' times.');
+    res.send('Hello, '+ name + ' has been greeted: ' + map[list[i]] + ' times.');
   }
 });
 
