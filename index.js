@@ -28,17 +28,20 @@ app.get('/greeted/', function(req, res) {
 // });
 
 app.get('/counter/:user', function(req, res) {
+  name = req.params.user;
   for (var i = 0; i < list.length; i++) {
     if (map[list[i]] != null) {
       map[list[i]] += 1;
-      console.log(list);
-      console.log(map);
+      // console.log(list);
+      // console.log(map);
     } else {
       map[list[i]] = 1;
     }
-    res.send('Hello, '+ name + ' has been greeted: ' + map[list[i]] + ' times.');
+  res.send('Hello, '+ name + ' has been greeted: ' + map[list[i]] + ' times.');
   }
 });
+
+
 
 var server = app.listen(3000, function() {
 
