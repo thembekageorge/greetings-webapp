@@ -1,39 +1,54 @@
 var express = require('express');
 var app = express();
 var list = [];
-var noDuplicity = [];
+var noDup = [];
+var name = '';
 var counter = 0;
-var name ;
+var map = new Object();
 
-// create a route
-app.get('/', function (req, res) {
- res.send('You did not enter a name');
+
+app.get('/', function(req, res) {
+  res.send('You did not enter a name');
 });
 
-app.get('/greetings/:user', function(req, res){
- res.send('Hello ' + req.params.user);
+app.get('/greetings/:user', function(req, res) {
+  res.send('Hello, ' + req.params.user + '!');
   name = req.params.user;
-if(noDuplicity.indexOf(name) === -1){
-  noDuplicity.push(name)
-}
-   list.push(name);
-   counter++;
+  if (noDup.indexOf(name) === -1) {
+    noDup.push(name);
+  }
+  list.push(name);
 });
 
 app.get('/greeted/', function(req, res) {
-res.send(noDuplicity);
+  res.send("People greeted : " + noDup);
 });
+
+// app.get('/counter/', function(req, res) {
+//   res.send("People greeted : " + noDup);
+// });
 
 app.get('/counter/:user', function(req, res) {
-res.send('You have been greeted: ' + counter + ' times.');
+  // name = req.params.user;
+  for (var i = 0; i < list.length; i++) {
+    if (map[list[i]] != null) {
+      map[list[i]] += 1;
+      // counter++;
+      console.log(list);
+      console.log(map);
+    } else {
+      map[list[i]] = 1;
+      // res.send('I am sorry' + name + 'you have not been ');
+    }
+    res.send(name + ' you have been greeted: ' + map[list[i]] + ' times.');
+  }
 });
 
+var server = app.listen(3000, function() {
 
-var server = app.listen(3000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
 
- var host = server.address().address;
- var port = server.address().port;
-
- console.log('Listening at http://%s:%s', host, port);
+  console.log('Listening at http://%s:%s', host, port);
 
 });
