@@ -20,7 +20,7 @@ app.get('/greetings/:user', function(req, res) {
 });
 
 app.get('/greeted/', function(req, res) {
-  res.send("People greeted : " + noDup);
+  res.send("People greeted : " + <a href>noDup</a>);
 });
 
 // app.get('/counter/', function(req, res) {
@@ -32,8 +32,6 @@ app.get('/counter/:user', function(req, res) {
   for (var i = 0; i < list.length; i++) {
     if (map[list[i]] != null) {
       map[list[i]] += 1;
-      // console.log(list);
-      // console.log(map);
     } else {
       map[list[i]] = 1;
     }
