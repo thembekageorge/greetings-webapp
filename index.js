@@ -4,7 +4,7 @@ var list = [];
 var noDup = [];
 var name = '';
 var map = new Object();
-
+var bodyParser = require('body-parser');
 
 app.get('/', function(req, res) {
   res.send('You did not enter a name');
