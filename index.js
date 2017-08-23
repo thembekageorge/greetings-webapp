@@ -4,7 +4,7 @@ var list = [];
 var noDup = [];
 var name = '';
 var map = new Object();
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 
 app.get('/', function(req, res) {
   res.send('You did not enter a name');
@@ -20,7 +20,7 @@ app.get('/greetings/:user', function(req, res) {
 });
 
 app.get('/greeted/', function(req, res) {
-  res.send("People greeted : " + <a href>noDup</a>);
+  res.send("People greeted : " + noDup);
 });
 
 // app.get('/counter/', function(req, res) {
